@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+# Department data to be seeded
+departments_data = [
+  { name: 'Sales' },
+  { name: 'Marketing' },
+  { name: 'Engineering' },
+  { name: 'Human Resources' },
+  # Add more department data as needed
+]
+
+# Create departments
+departments_data.each do |department|
+  Department.create!(department)
+end
