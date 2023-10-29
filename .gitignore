@@ -36,3 +36,8 @@
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
+
+
+
+# devise secret key
+# config.secret_key = '51b9d2c64ce8d50d6ec6a3a030e9873cb529a82f99a57189d220ee05babca0663adebbbbd4a8b7d36a9afc48fa7f406a83ff4e1bcc45397c510d5eb6084de712'
