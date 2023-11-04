@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  devise_for :users, controllers: {
-  registrations: 'users/registrations'
-}
-  root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Other routes...
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  # Define a route for profile editing
+  get '/profile/edit', to: 'profiles#edit', as: 'edit_profile'
+  patch '/profile', to: 'profiles#update', as: 'update_profile'
+
+  # Other routes...
+
+  root to: "pages#home"
 end
