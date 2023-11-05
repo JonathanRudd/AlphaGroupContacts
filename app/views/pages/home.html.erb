@@ -8,8 +8,9 @@
   <%= link_to "Edit My Profile", edit_profile_path, class: "btn btn-primary" %>
 
 
-  <div>
-    <table>
+<div>
+  <table class="table table-striped">
+    <thead>
       <tr>
         <th>Name</th>
         <th>First Name</th>
@@ -18,18 +19,21 @@
         <th>Phone Number</th>
         <th>SNS Information</th>
       </tr>
+    </thead>
+    <tbody>
       <% @users.each do |user| %>
         <tr>
           <td><%= user.email %></td>
-          <td><%= user.profile&.first_name || 'N/A' %></td>
-          <td><%= user.profile&.last_name || 'N/A' %></td>
-          <td><%= user.profile&.address || 'N/A' %></td>
-          <td><%= user.profile&.phone_number || 'N/A' %></td>
-          <td><%= user.profile&.sns_information || 'N/A' %></td>
+          <td><%= user.profile&.first_name || '' %></td>
+          <td><%= user.profile&.last_name || '' %></td>
+          <td><%= user.profile&.address || '' %></td>
+          <td><%= user.profile&.phone_number || '' %></td>
+          <td><%= user.profile&.sns_information || '' %></td>
         </tr>
       <% end %>
-    </table>
-  </div>
+    </tbody>
+  </table>
+</div>
 
 <% else %>
 
