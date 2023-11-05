@@ -1,9 +1,39 @@
-<h1>Pages#home</h1>
-<p></p>
-<div>
-  <%=if user_signed_in?
-    "Welcome #{current_user.email}"
-    else
-      "You are not logged in"
-    end%>
-</div>
+
+
+<% if user_signed_in? %>
+
+  <h1><%="#{current_user.department.name}"%></h1>
+
+
+  <%= link_to "Edit My Profile", edit_profile_path, class: "btn btn-primary" %>
+
+
+  <div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>SNS Information</th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.profile&.first_name || 'N/A' %></td>
+          <td><%= user.profile&.last_name || 'N/A' %></td>
+          <td><%= user.profile&.address || 'N/A' %></td>
+          <td><%= user.profile&.phone_number || 'N/A' %></td>
+          <td><%= user.profile&.sns_information || 'N/A' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+<% else %>
+
+  <h1>Home</h1>
+  <p>Sign in to see the list of users</p>
+
+<% end %>
