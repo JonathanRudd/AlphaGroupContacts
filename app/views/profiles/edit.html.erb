@@ -4,20 +4,23 @@
 
 
 
-<%= form_for @user.profile, url: update_profile_path, method: :patch do |f| %>
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
-  </div>
+<table class="table">
+  <%= form_for @user.profile, url: update_profile_path, method: :patch do |f| %>
+    <tr>
+      <td><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name, class: "form-control" %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name, class: "form-control" %></td>
+    </tr>
 
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
-  </div>
+    <!-- Other form fields for editing profile attributes -->
 
-  <!-- Other form fields for editing profile attributes -->
-
-  <div class="actions">
-    <%= f.submit "Update Profile" %>
-  </div>
-<% end %>
+    <tr>
+      <td colspan="2">
+        <%= f.submit "Update Profile", class: "btn btn-primary" %>
+      </td>
+    </tr>
+  <% end %>
+</table>
