@@ -14,6 +14,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   private
 
   def profile_params

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/profile/edit', to: 'profiles#edit', as: 'edit_profile'
   patch '/profile', to: 'profiles#update', as: 'update_profile'
 
-  # Other routes...
+  # define a route for the show action
+  get '/profile/:id', to: 'profiles#show', as: 'profile'
 
   root to: "pages#home"
 end
