@@ -7,3 +7,9 @@
 
 
 </dl>
+
+<%= link_to "#{@user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{@user.profile.address || ''}", target: '_blank' %>
+
+<div>
+<%= link_to "Home", root_path, class: "btn btn-primary" %>
+</div>

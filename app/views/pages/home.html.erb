@@ -22,7 +22,8 @@
         <tr>
           <td><%= link_to user.profile&.first_name + " " + user.profile&.last_name|| '', profile_path(user) %></td>
           <td><%= user.email %></td>
-          <td><%= user.profile&.address || '' %></td>
+          <td><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %>
+</td>
           <td><%= user.profile&.phone_number || '' %></td>
           <td><%= user.profile&.sns_information || '' %></td>
         </tr>
