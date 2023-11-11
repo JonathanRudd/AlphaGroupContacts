@@ -10,6 +10,10 @@
 
 <%= link_to "#{@user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{@user.profile.address || ''}", target: '_blank' %>
 
+<br>
+
+<%= link_to "#{@user.profile.sns_information}", "https://line.me/R/ti/p/#{@line}", target: '_blank' %>
+
 <div>
 <%= link_to "Home", root_path, class: "btn btn-primary" %>
 </div>
