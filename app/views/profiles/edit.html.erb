@@ -1,6 +1,7 @@
 <%# app/views/profiles/edit.html.erb %>
 
-<h1>Edit Your Profile</h1>
+<h1>My Information</h1>
+
 
 
 
@@ -15,9 +16,24 @@
     <%= f.text_field :last_name %>
   </div>
 
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+  </div>
+
+    <div class="field">
+    <%= f.label :sns_information %>
+    <%= f.text_field :sns_information %>
+  </div>
+
   <!-- Other form fields for editing profile attributes -->
 
   <div class="actions">
-    <%= f.submit "Update Profile" %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>
