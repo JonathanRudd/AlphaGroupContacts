@@ -4,17 +4,18 @@
 <div class="container">
   <div>
     <h1><%="#{current_user.department.name}"%></h1>
-    <%= link_to "Edit My Information", edit_profile_path, class: "btn btn-primary" %>
+
+    <%= link_to t('edit_my_info'), edit_profile_path, class: "btn btn-primary" %>
   </div>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Phone Number</th>
-        <th>SNS Information</th>
+        <th><%= t('table_headers.name') %></th>
+        <th><%= t('table_headers.email') %></th>
+        <th><%= t('table_headers.address') %></th>
+        <th><%= t('table_headers.phone_number') %></th>
+        <th><%= t('table_headers.sns_information') %></th>
       </tr>
     </thead>
     <tbody>
@@ -25,7 +26,7 @@
           <td><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %>
 </td>
           <td><%= user.profile&.phone_number || '' %></td>
-          <td><%= user.profile&.sns_information || '' %></td>
+          <td><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
         </tr>
       <% end %>
     </tbody>

@@ -9,6 +9,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <div class="language-toggle">
+      <%= link_to t('toggle_language'), language_switching_toggle_locale_path, method: :post %>
+    </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>

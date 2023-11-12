@@ -1,0 +1,9 @@
+ja:
+  toggle_language: "ENG"
+  table_headers:
+    name: "名前"
+    email: "メール"
+    address: "住所"
+    phone_number: "電話番号"
+    sns_information: "SNS情報"
+  edit_my_info: "情報を編集する"

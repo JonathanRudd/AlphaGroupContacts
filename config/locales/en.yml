@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  toggle_language: "日本語"
+  table_headers:
+    name: "Name"
+    email: "Email"
+    address: "Address"
+    phone_number: "Phone Number"
+    sns_information: "SNS Information"
+  edit_my_info: "Edit my information"

@@ -8,4 +8,5 @@ class PagesController < ApplicationController
       @users = []
     end
   end
+
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'language_switching/toggle_locale'
   # Other routes...
 
   devise_for :users, controllers: {
@@ -13,4 +14,7 @@ Rails.application.routes.draw do
   get '/profile/:id', to: 'profiles#show', as: 'profile'
 
   root to: "pages#home"
+
+  post '/toggle_locale', to: 'language_switching#toggle_locale', as: :toggle_locale
+
 end
