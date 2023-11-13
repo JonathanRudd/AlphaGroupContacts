@@ -12,9 +12,9 @@
     <div class="language-toggle">
       <%# redirects to japanese or english %>
       <% if I18n.locale == :ja %>
-        <%= link_to t('toggle_language'), root_path(locale: 'en'), method: :post %>
+        <%= link_to t('toggle_language'), url_for(locale: 'en'), method: :post %>
       <% else %>
-        <%= link_to t('toggle_language'), root_path(locale: 'ja'), method: :post %>
+        <%= link_to t('toggle_language'), url_for(locale: 'ja'), method: :post %>
       <% end %>
     </div>
 
