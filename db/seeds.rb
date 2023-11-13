@@ -1,3 +1,5 @@
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -7,41 +9,34 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-# Department data to be seeded
-# db/seeds.rb
+# departments.rb (seed for departments)
+Department.create(name: 'Sales', created_at: Time.now, updated_at: Time.now)
+Department.create(name: 'Engineering', created_at: Time.now, updated_at: Time.now)
+Department.create(name: 'Human Resources', created_at: Time.now, updated_at: Time.now)
 
-# Seed data for departments
-departments = [
-  { name: 'Sales' },
-  { name: 'Marketing' },
-  { name: 'Engineering' },
-  { name: 'Human Resources' },
-]
 
-departments.each do |department_data|
-  Department.create(department_data)
-end
+# users.rb (seed for users)
+50.times do |i|
+  user = User.create!(
+    email: "user#{i + 1}@example.com",
+    password: 'password123',
+    password_confirmation: 'password123',
+    created_at: Time.now,
+    updated_at: Time.now,
+    department_id: Department.all.sample.id
+  )
 
-# Seed data for users
-users = [
-  { email: 'user1@example.com', password: 'password1', department_id: Department.find_by(name: 'Sales').id },
-  { email: 'user2@example.com', password: 'password2', department_id: Department.find_by(name: 'Sales').id },
-  { email: 'user3@example.com', password: 'password3', department_id: Department.find_by(name: 'Engineering').id },
-  { email: 'user4@example.com', password: 'password4', department_id: Department.find_by(name: 'Human Resources').id },
-]
-
-users.each do |user_data|
-  User.create(user_data)
-end
-
-# Seed data for profiles
-profiles = [
-  { user: User.find_by(email: 'user1@example.com'), first_name: 'John', last_name: 'Doe', address: '123 Main St', phone_number: '555-123-4567', sns_information: 'Twitter: @johndoe' },
-  { user: User.find_by(email: 'user2@example.com'), first_name: 'Jane', last_name: 'Smith', address: '456 Elm St', phone_number: '555-987-6543', sns_information: 'LinkedIn: linkedin.com/in/janesmith' },
-  { user: User.find_by(email: 'user3@example.com'), first_name: 'Robert', last_name: 'Johnson', address: '789 Oak St', phone_number: '555-555-5555', sns_information: 'Facebook: facebook.com/robert.johnson' },
-  { user: User.find_by(email: 'user4@example.com'), first_name: 'Emily', last_name: 'Wilson', address: '101 Pine St', phone_number: '555-222-3333', sns_information: 'Instagram: @emilywilson' },
-]
-
-profiles.each do |profile_data|
-  Profile.create(profile_data)
+  if user.errors.any?
+    puts "Failed to create user: #{user.errors.full_messages.join(", ")}"
+  else
+    user.profile.update(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: Faker::Address.street_address,
+      phone_number: Faker::PhoneNumber.phone_number,
+      sns_information: Faker::Internet.username,
+      created_at: Time.now,
+      updated_at: Time.now
+    )
+  end
 end
