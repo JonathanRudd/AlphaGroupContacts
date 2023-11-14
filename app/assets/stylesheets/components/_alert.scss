@@ -3,4 +3,11 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  opacity: 1;
+  transition: opacity 3s ease-in-out;
+}
+
+.alert.fade-out {
+  opacity: 0;
+  transition-delay: 1s; // Add a delay of 5 seconds
 }

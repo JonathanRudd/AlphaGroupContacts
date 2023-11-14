@@ -38,3 +38,8 @@ en:
     phone_number: "Phone Number"
     sns_information: "SNS Information"
   edit_my_info: "Edit my information"
+  first_name: "First Name"
+  last_name: "Last Name"
+  submit: "Submit"
+  return: "Return"
+  my_info: "My Information"
