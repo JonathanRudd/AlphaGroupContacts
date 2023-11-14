@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 <div class="container">
   <div>
-    <h1><%="#{current_user.department.name}"%></h1>
+    <h1 class="page-header"><%="#{current_user.department.name}"%></h1>
 
     <%= link_to t('edit_my_info'), edit_profile_path, class: "btn btn-primary" %>
   </div>
