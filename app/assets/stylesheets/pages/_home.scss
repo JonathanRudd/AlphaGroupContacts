@@ -1,16 +1,65 @@
 // Specific CSS for your home-page
 
+
+.header{ position:sticky; top: 0 ; }
+
+
 // small screens
 
 @media (min-width: 100px) and (max-width: 575px) {
 
 
-}
+  .desktop-table {
+    display: none;
+  }
 
+  .mobile-card {
+
+    width: 368px;
+    height: 254px;
+    flex-shrink: 0;
+    border-radius: 52px;
+    background: #F8F8F8;
+  }
+
+  .mobile-card-header {
+    width: 368px;
+    height: 50px;
+    flex-shrink: 0;
+    background: rgba(0, 0, 0, 0.05);
+
+    color: #005BAC;
+    font-family: Exo;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .mobile-card-list-headers {
+
+    width: 100px;
+
+    color: rgba(46, 46, 46, 0.80);
+    display: block;
+    text-align: right;
+    font-family: Exo;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 110%; /* 17.6px **/
+  }
+
+}
 
 // big screens
 
 @media (min-width: 992px) {
+
+.mobile-table {
+
+  visibility: hidden;
+}
 
 
 }
