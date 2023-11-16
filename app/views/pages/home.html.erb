@@ -46,33 +46,30 @@
       <%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %>
       </div>
 
-      <ul class="list-group mobile-card-list-headers">
-        <li class="list-group-item"><%= t('table_headers.name') %></li>
-        <li class="list-group-item"><%= t('table_headers.email') %></li>
-        <li class="list-group-item"><%= t('table_headers.address') %></li>
-        <li class="list-group-item"><%= t('table_headers.phone_number') %></li>
-        <li class="list-group-item"><%= t('table_headers.sns_information') %></li>
-      </ul>
-
-
-
-
-
+      <table>
+        <tbody>
+          <tr>
+            <th><%= t('table_headers.email') %></th>
+            <td><%= user.email %></td>
+          </tr>
+          <tr>
+            <th><%= t('table_headers.address') %></th>
+            <td><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+          </tr>
+          <tr>
+            <th><%= t('table_headers.phone_number') %></th>
+            <td><%= user.profile&.phone_number || '' %></td>
+          </tr>
+          <tr>
+            <th><%= t('table_headers.sns_information') %></th>
+            <td><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   <% end %>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 <% else %>
