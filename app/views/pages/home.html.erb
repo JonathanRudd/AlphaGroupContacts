@@ -42,27 +42,27 @@
   <% @users.each do |user| %>
 
     <div class="mobile-card">
-      <div class="mobile-card-header">
+      <div class="mobile-card-header d-flex align-items-center">
       <%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %>
       </div>
 
       <table>
         <tbody>
           <tr>
-            <th><%= t('table_headers.email') %></th>
-            <td><%= user.email %></td>
+            <th class="mobile-card-row-header"><%= t('table_headers.email') %></th>
+            <td class="mobile-card-row-info"><%= user.email %></td>
           </tr>
           <tr>
-            <th><%= t('table_headers.address') %></th>
-            <td><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+            <th class="mobile-card-row-header"><%= t('table_headers.address') %></th>
+            <td class="mobile-card-row-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
           </tr>
           <tr>
-            <th><%= t('table_headers.phone_number') %></th>
-            <td><%= user.profile&.phone_number || '' %></td>
+            <th class="mobile-card-row-header"><%= t('table_headers.phone_number') %></th>
+            <td class="mobile-card-row-info"><%= user.profile&.phone_number || '' %></td>
           </tr>
           <tr>
-            <th><%= t('table_headers.sns_information') %></th>
-            <td><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+            <th class="mobile-card-row-header"><%= t('table_headers.sns_information') %></th>
+            <td class="mobile-card-row-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
           </tr>
         </tbody>
       </table>
