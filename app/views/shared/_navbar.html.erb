@@ -9,6 +9,15 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <div class="language-toggle">
+      <%# redirects to japanese or english %>
+      <% if I18n.locale == :ja %>
+        <%= link_to t('toggle_language'), url_for(locale: 'en'), method: :post %>
+      <% else %>
+        <%= link_to t('toggle_language'), url_for(locale: 'ja'), method: :post %>
+      <% end %>
+    </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>

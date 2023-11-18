@@ -1,36 +1,76 @@
 
-
 <% if user_signed_in? %>
-<div class="container">
+
+<div class="container ">
   <div>
-    <h1><%="#{current_user.department.name}"%></h1>
-    <%= link_to "Edit My Information", edit_profile_path, class: "btn btn-primary" %>
+    <h1 class="page-header"><%="#{current_user.department.name}"%></h1>
+
+    <%= link_to t('edit_my_info'), edit_profile_path, class: "btn btn-primary" %>
   </div>
 
-  <table class="table table-striped">
+
+<%# desktop table" %>
+
+  <table class="table table-striped table-responsive desktop-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Phone Number</th>
-        <th>SNS Information</th>
+        <th><%= t('table_headers.name') %></th>
+        <th><%= t('table_headers.email') %></th>
+        <th><%= t('table_headers.address') %></th>
+        <th><%= t('table_headers.phone_number') %></th>
+        <th><%= t('table_headers.sns_information') %></th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= link_to user.profile&.first_name + " " + user.profile&.last_name|| '', profile_path(user) %></td>
-          <td><%= user.email %></td>
-          <td><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %>
-</td>
-          <td><%= user.profile&.phone_number || '' %></td>
-          <td><%= user.profile&.sns_information || '' %></td>
+          <td class="table-text-info"><%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %></td>
+          <td class="table-text-info"><%= user.email %></td>
+          <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+          <td class="table-text-info"><%= user.profile&.phone_number || '' %></td>
+          <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<%# mobile table" %>
+
+<div class="mobile-table container">
+
+  <% @users.each do |user| %>
+
+    <div class="mobile-card">
+      <div class="mobile-card-header d-flex align-items-center">
+      <%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %>
+      </div>
+
+      <table>
+        <tbody>
+          <tr>
+            <th class="mobile-card-row-header"><%= t('table_headers.email') %></th>
+            <td class="table-text-info"><%= user.email %></td>
+          </tr>
+          <tr>
+            <th class="mobile-card-row-header"><%= t('table_headers.address') %></th>
+            <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+          </tr>
+          <tr>
+            <th class="mobile-card-row-header"><%= t('table_headers.phone_number') %></th>
+            <td class="table-text-info"><%= user.profile&.phone_number || '' %></td>
+          </tr>
+          <tr>
+            <th class="mobile-card-row-header"><%= t('table_headers.sns_information') %></th>
+            <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  <% end %>
+</div>
+
 
 <% else %>
 
