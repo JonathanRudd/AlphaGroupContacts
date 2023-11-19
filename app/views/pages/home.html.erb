@@ -24,10 +24,21 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td class="table-text-info"><%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %></td>
+          <td class="table-text-info">
+            <div><%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %></div>
+            <br>
+            <div><%= user.profile.affiliation|| ''%></div>
+          </td>
           <td class="table-text-info"><%= user.email %></td>
           <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
-          <td class="table-text-info"><%= user.profile&.phone_number || '' %></td>
+          <td>
+            <div class="phone-header fst-italic"><%= t('table_headers.phone_number')+':  ' %></div>
+            <div class="table-text-info"><%= user.profile&.phone_number || '' %></div>
+            <div class="phone-header fst-italic"><%= t('mobile')+':  ' %></div>
+            <div class="table-text-info"><%= user.profile&.mobile || '' %></div>
+            <div class="phone-header fst-italic"><%= t('company_phone')+':  ' %></div>
+            <div class="table-text-info"><%= user.profile&.company_phone || '' %></div>
+          </td>
           <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
         </tr>
       <% end %>
@@ -37,18 +48,22 @@
 
 <%# mobile table" %>
 
-<div class="mobile-table container">
+  <div class="mobile-table container">
 
-  <% @users.each do |user| %>
+    <% @users.each do |user| %>
+      <div class="mobile-card">
+        <div class="mobile-card-header d-flex align-items-center">
+          <div>
+            <%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %>
+          </div>
+          <div class="fs-6 fw-light text-muted">
+            <%= user.profile.affiliation || '' %>
+          </div>
+        </div>
 
-    <div class="mobile-card">
-      <div class="mobile-card-header d-flex align-items-center">
-      <%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %>
-      </div>
-
-      <table>
-        <tbody>
-          <tr>
+        <table>
+          <tbody>
+            <tr>
             <th class="mobile-card-row-header"><%= t('table_headers.email') %></th>
             <td class="table-text-info"><%= user.email %></td>
           </tr>
