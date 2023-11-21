@@ -24,38 +24,49 @@
 <%# desktop table" %>
 
   <table class="table table-striped table-responsive desktop-table">
-    <thead>
-      <tr>
-        <th><%= t('table_headers.name') %></th>
-        <th><%= t('table_headers.email') %></th>
-        <th><%= t('table_headers.address') %></th>
-        <th><%= t('table_headers.phone') %></th>
-        <th><%= t('table_headers.sns_information') %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+  <%= form_with(url: request.path, method: "get", local: true, data: {turbo: "false"}) do %>
+    <%= label_tag :query, "Search" %>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", name: nil %>
+    <%= link_to "Clear", request.path, class: "btn btn-secondary" %>
+  <% end %>
+
+    <% if @users.empty? %>
+      <p>No users found</p>
+    <% else %>
+      <thead>
         <tr>
-          <td class="table-text-info">
-            <div><%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %></div>
-            <br>
-            <div><%= user.profile.affiliation|| ''%></div>
-          </td>
-          <td class="table-text-info"><%= user.email %></td>
-          <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
-          <td>
-            <div class="phone-header fst-italic"><%= t('table_headers.phone_number')+':  ' %></div>
-            <div class="table-text-info"><%= user.profile&.phone_number || '' %></div>
-            <div class="phone-header fst-italic"><%= t('mobile')+':  ' %></div>
-            <div class="table-text-info"><%= user.profile&.mobile || '' %></div>
-            <div class="phone-header fst-italic"><%= t('company_phone')+':  ' %></div>
-            <div class="table-text-info"><%= user.profile&.company_phone || '' %></div>
-          </td>
-          <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+          <th><%= t('table_headers.name') %></th>
+          <th><%= t('table_headers.email') %></th>
+          <th><%= t('table_headers.address') %></th>
+          <th><%= t('table_headers.phone') %></th>
+          <th><%= t('table_headers.sns_information') %></th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="table-text-info">
+              <div><%= link_to user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| '', profile_path(user) %></div>
+              <br>
+              <div><%= user.profile.affiliation|| ''%></div>
+            </td>
+            <td class="table-text-info"><%= user.email %></td>
+            <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+            <td>
+              <div class="phone-header fst-italic"><%= t('table_headers.phone_number')+':  ' %></div>
+              <div class="table-text-info"><%= user.profile&.phone_number || '' %></div>
+              <div class="phone-header fst-italic"><%= t('mobile')+':  ' %></div>
+              <div class="table-text-info"><%= user.profile&.mobile || '' %></div>
+              <div class="phone-header fst-italic"><%= t('company_phone')+':  ' %></div>
+              <div class="table-text-info"><%= user.profile&.company_phone || '' %></div>
+            </td>
+            <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 </div>
 
 <%# mobile table" %>
