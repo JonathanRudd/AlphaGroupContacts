@@ -24,19 +24,3 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
-
-/* Customize the dropdown menu container */
-.nav-item .dropdown-menu {
-  background-color: #333; /* Change the background color */
-  border-radius: 0; /* Remove the border radius */
-}
-
-/* Customize the dropdown menu items */
-.nav-item .dropdown-menu .dropdown-item {
-  color: #fff; /* Change the text color */
-}
-
-/* Customize the dropdown menu items on hover */
-.nav-item .dropdown-menu .dropdown-item:hover {
-  background-color: #444; /* Change the background color on hover */
-}
