@@ -1,8 +1,35 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: black;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+}
+
+.current-user-name {
+  display: none !important;
+  color: red;
+}
+
+
+.navbar {
+  background: black;
+}
+
+.navbarDropdown   {
+
+}
+
+// small screens
+
+@media (min-width: 100px) and (max-width: 575px) {
+
+
+}
+
+// big screens
+@media (min-width: 992px) {
+
+
 }

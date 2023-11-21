@@ -1,41 +1,41 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://www.kk-alpha.com/common/img/logo_alpha01.png" %>
     <% end %>
 
     <%# toggles user name and settings button into dropdown in screen is too small %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!--<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
+    </button>-->
 
-    <div class="language-toggle">
-      <%# redirects to japanese or english %>
-      <% if I18n.locale == :ja %>
-        <%= link_to t('toggle_language'), url_for(locale: 'en'), method: :post %>
-      <% else %>
-        <%= link_to t('toggle_language'), url_for(locale: 'ja'), method: :post %>
-      <% end %>
-    </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item justify-text ">
-            <h4>
+          <li class="nav-item justify-text collapse navbar-collapse">
+            <h4 class="">
               <%=  "#{current_user.profile&.first_name || 'N/A'} #{current_user.profile&.last_name || 'N/A'}" %>
             </h4>
           </li>
-          <li class="nav-item dropdown justify-text">
+          <li class="nav-item dropdown justify-text ">
             <div>
-              <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-person-gear" viewBox="0 0 16 16">
-                  <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Zm3.63-4.54c.18-.613 1.048-.613 1.229 0l.043.148a.64.64 0 0 0 .921.382l.136-.074c.561-.306 1.175.308.87.869l-.075.136a.64.64 0 0 0 .382.92l.149.045c.612.18.612 1.048 0 1.229l-.15.043a.64.64 0 0 0-.38.921l.074.136c.305.561-.309 1.175-.87.87l-.136-.075a.64.64 0 0 0-.92.382l-.045.149c-.18.612-1.048.612-1.229 0l-.043-.15a.64.64 0 0 0-.921-.38l-.136.074c-.561.305-1.175-.309-.87-.87l.075-.136a.64.64 0 0 0-.382-.92l-.148-.045c-.613-.18-.613-1.048 0-1.229l.148-.043a.64.64 0 0 0 .382-.921l-.074-.136c-.306-.561.308-1.175.869-.87l.136.075a.64.64 0 0 0 .92-.382l.045-.148ZM14 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"/>
+              <button class="m-2" id="navbarDropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21 16L21 18L3 18L3 16L21 16ZM21 11L3 11L3 13L21 13L21 11ZM21 6L3 6L3 8L21 8L21 6Z" fill="black"/>
                 </svg>
-              </a>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit User settings", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Another action", "#", class: "dropdown-item" %>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-content" aria-labelledby="navbarDropdown">
+
+                <%= link_to t('edit_my_info'), edit_profile_path, class: "dropdown-item" %>
+
+                <%= link_to url_for(locale: I18n.locale == :ja ? 'en' : 'ja'), method: :post, class: "dropdown-item language-toggle" do %>
+                  <%= t('toggle_language') %>
+                <% end %>
+
+                <%= link_to t('edit_password_path'), edit_user_registration_path, class: "dropdown-item" %>
+
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </div>

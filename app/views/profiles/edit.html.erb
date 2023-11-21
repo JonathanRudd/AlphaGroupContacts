@@ -8,23 +8,30 @@
 
   <%= form_for @user.profile, url: update_profile_path, method: :patch do |f| %>
     <div class="form-group row">
-      <%= f.label t('first_name'), class: "col-m-2 col-form-label" %>
+      <%= f.label t('first_name')+"*", class: "col-m-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :first_name, class: "form-control", style: "background-color: white;" %>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label t('last_name'), class: "col-m-2 col-form-label" %>
+      <%= f.label t('last_name')+"*", class: "col-m-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :last_name, class: "form-control", style: "background-color: white;" %>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label t('table_headers.address'), class: "col-m-2 col-form-label" %>
+      <%= f.label t('table_headers.address')+"*", class: "col-m-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :address, class: "form-control", style: "background-color: white;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label t('table_headers.affiliation')+"*", class: "col-m-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :affiliation, class: "form-control", style: "background-color: white;" %>
       </div>
     </div>
 
@@ -36,17 +43,32 @@
     </div>
 
     <div class="form-group row">
+      <%= f.label t('table_headers.mobile'), class: "col-m-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :mobile, class: "form-control", style: "background-color: white;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label t('table_headers.company_phone'), class: "col-m-2 col-form-label" %>
+      <div class="col-sm-10">
+        <%= f.text_field :company_phone, class: "form-control", style: "background-color: white;" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
       <%= f.label t('table_headers.sns_information'), class: "col-m-2 col-form-label" %>
       <div class="col-sm-10">
         <%= f.text_field :sns_information, class: "form-control", style: "background-color: white;" %>
       </div>
     </div>
 
+
     <!-- Other form fields for editing profile attributes -->
 
-    <div class="form-group row">
+    <div class="form-group row" style="padding: 10px;">
       <div class="col-sm-10 offset-sm-2">
-        <%= f.submit t('submit'), class: "btn btn-primary" %>
+        <%= f.submit t('submit'), class: "btn btn-primary", style: "margin-right: 10px;" %>
         <%= link_to t('return'), root_path, class: "btn btn-secondary" %>
       </div>
     </div>
