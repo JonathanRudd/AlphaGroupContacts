@@ -27,16 +27,15 @@
                 </svg>
               </button>
               <div class="dropdown-menu dropdown-menu-end dropdown-content" aria-labelledby="navbarDropdown">
-                <%= link_to "Edit User settings", edit_user_registration_path, class: "dropdown-item" %>
-                <%= link_to "Another action", "#", class: "dropdown-item" %>
-                    <div class="language-toggle dropdown-item">
-                      <%# redirects to japanese or english %>
-                      <% if I18n.locale == :ja %>
-                        <%= link_to t('toggle_language'), url_for(locale: 'en'), method: :post %>
-                      <% else %>
-                        <%= link_to t('toggle_language'), url_for(locale: 'ja'), method: :post %>
-                      <% end %>
-                    </div>
+
+                <%= link_to t('edit_my_info'), edit_profile_path, class: "dropdown-item" %>
+
+                <%= link_to url_for(locale: I18n.locale == :ja ? 'en' : 'ja'), method: :post, class: "dropdown-item language-toggle" do %>
+                  <%= t('toggle_language') %>
+                <% end %>
+
+                <%= link_to t('edit_password_path'), edit_user_registration_path, class: "dropdown-item" %>
+
                 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </div>
             </div>

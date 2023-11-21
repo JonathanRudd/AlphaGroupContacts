@@ -5,7 +5,19 @@
   <div>
     <h1 class="page-header"><%="#{current_user.department.name}"%></h1>
 
-    <%= link_to t('edit_my_info'), edit_profile_path, class: "btn btn-primary" %>
+    <% if current_user.profile.last_name == ""%>
+      <h4><%= t('welcome_message.welcome') %></h4>
+      <div>
+        <%= t('welcome_message.please')%>
+      </div>
+      <br>
+      <div>
+        <%= link_to t('edit_my_info'), edit_profile_path, class: "btn btn-primary" %>
+      </div>
+      <div class="text-muted">
+        <%= t('welcome_message.later') %>
+      </div>
+    <% end %>
   </div>
 
 
