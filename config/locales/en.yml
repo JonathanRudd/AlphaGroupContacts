@@ -57,3 +57,7 @@ en:
     welcome: "Welcome to the emergency contact list!"
     please: "Please start by filling out your information:"
     later:  "You can later find the edit page in the top right dropdown"
+  sign_up: "Sign-up to see list of users"
+  login: "Login"
+  department: "Department"
+  forgot_password: "Forgot your password?"

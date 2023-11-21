@@ -6,7 +6,7 @@ class PagesController < ApplicationController
       @users = User.where(department_id: current_user.department_id)
       @users =
           if params[:query].present?
-            User.joins(:profile).where('profiles.first_name LIKE ? OR profiles.last_name LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
+            User.joins(:profile).where('LOWER(profiles.first_name) LIKE ? OR LOWER(profiles.last_name) LIKE ? OR LOWER(profiles.affiliation) LIKE ?', "%#{params[:query].downcase}%", "%#{params[:query].downcase}%", "%#{params[:query].downcase}%")
           else
             User.all
           end

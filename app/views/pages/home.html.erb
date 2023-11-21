@@ -125,8 +125,10 @@
 
 <% else %>
 
-<div class="container">
-  <h1>Home</h1>
-  <p>Sign in to see the list of users</p>
+<div class="container d-flex justify-content-center align-items-center">
+  <div>
+    <%= link_to t('sign_up'), new_user_registration_path, class: "btn btn-lg btn-primary m-5" %>
+  </div>
 </div>
+
 <% end %>
