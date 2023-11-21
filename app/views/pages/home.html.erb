@@ -27,7 +27,7 @@
     <div class="container">
       <div class="row justify-content-end">
         <div class="col-md-5">
-          <div>
+          <div class="search-bar">
             <%= form_with(url: request.path, method: "get", local: true, data: {turbo: "false"}) do %>
               <%= text_field_tag :query, params[:query] %>
               <%= submit_tag "Search", class: "btn btn-primary", name: nil %>

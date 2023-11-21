@@ -1,0 +1,10 @@
+/* print.css */
+@media print {
+  /* Add your print styles here */
+  .navbar, .footer, .sidebar, .desktop-table, .search-bar {
+    display: none;
+  }
+  /* Other print styles... */
+
+
+}

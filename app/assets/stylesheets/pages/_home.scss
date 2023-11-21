@@ -41,10 +41,9 @@
 
   .mobile-card-header {
     width: 468px;
-    height: 100px;
+    height: 50px;
     flex-shrink: 0;
     background: rgba(0, 0, 0, 0.05);
-
 
     color: #005BAC;
     font-family: Exo;
@@ -59,13 +58,14 @@
   .mobile-card-row-header {
     color: rgba(46, 46, 46, 0.80);
     text-align: right;
+
     font-family: Exo;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
-    line-height: 10%;
-    padding-right: 20px;
-    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 110%;
+
+
   }
 
 }
