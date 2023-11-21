@@ -38,7 +38,7 @@ en:
     phone: "Phone"
     phone_number: "Landline"
     mobile: "Mobile"
-    company_phone: "Company Phone"
+    company_phone: "Company No."
     sns_information: "LINE ID"
     affiliation: "Affiliation"
   edit_my_info: "Edit my information"

@@ -15,14 +15,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def index
-    @users =
-    if params[:query].present?
-      User.joins(:profile).where('profiles.first_name LIKE ? OR profiles.last_name LIKE ?', "%#{params[:query]}%", "%#{params[:query]}%")
-    else
-      User.all
-    end
-  end
 
 
 end
