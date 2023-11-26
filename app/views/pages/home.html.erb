@@ -31,7 +31,7 @@
             <%= form_with(url: request.path, method: "get", local: true, data: {turbo: "false"}) do %>
               <%= text_field_tag :query, params[:query] %>
               <%= submit_tag "Search", class: "btn btn-primary", name: nil %>
-              <%= link_to "Clear", request.path, class: "btn btn-secondary pl-2" %>
+                <%= link_to "Clear", root_path, class: "btn btn-secondary pl-2" %>
             <% end %>
           </div>
         </div>
@@ -86,7 +86,7 @@
           <div>
             <%= user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| ''%>
             <br>
-            <div class="fst-italic"><%= user.profile.affiliation || '' %></div>
+            <div class="fst-italic text-muted small"><%= user.profile.affiliation || '' %></div>
           </div>
         </div>
 

@@ -16,25 +16,15 @@ class ProfilesController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
-    @line = @user.profile.sns_information
-    @line = replace_at_symbol(@line)
+    @line = replace_at_symbol(@user.profile.sns_information)
   end
-
-  def replace_at_symbol(input_string)
-    # Check if the first character is "@"
-    if input_string && input_string[0] == "@"
-      # Replace "@" with "%40"
-      modified_string = input_string.sub(/^@/, '%40')
-      return modified_string
-    else
-      # No change needed
-      return input_string
-    end
-  end
-
 
   private
+
+  def replace_at_symbol(input_string)
+    return input_string unless input_string&.start_with?('@')
+    input_string.sub(/^@/, '%40')
+  end
 
   def profile_params
     params.require(:profile).permit(:first_name, :last_name, :address, :phone_number, :sns_information, :affiliation, :mobile, :company_phone, :private_phone, :private_phone)
