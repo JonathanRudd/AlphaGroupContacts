@@ -30,3 +30,7 @@ ja:
   login: "ログイン"
   department: "部署"
   forgot_password: "パスワードを忘れた場合"
+  update: "更新"
+  delete_account:
+    warning: "アカウントを削除すると、すべての情報が失われます。"
+    delete: "アカウントを削除する"

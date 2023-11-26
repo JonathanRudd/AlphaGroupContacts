@@ -61,3 +61,7 @@ en:
   login: "Login"
   department: "Department"
   forgot_password: "Forgot your password?"
+  update: "Update"
+  delete_account:
+    warning: "Delete your account. Warning: this will permanently delete your account and all associated data"
+    delete: "Delete"
