@@ -54,12 +54,18 @@
         <% @users.each do |user| %>
           <tr>
             <td class="table-text-info">
-              <div class="table-text-info desktop-card-header fs-3 text font-weight-bold"><%= user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| ''%></div>
+              <div class="table-text-info desktop-card-header fs-3 text font-weight-bold">
+                <%= user.profile&.first_name.to_s + " " + user.profile&.last_name.to_s|| ''%>
+              </div>
               <br>
               <div><%= user.profile.affiliation|| ''%></div>
             </td>
-            <td class="table-text-info"><%= user.email %></td>
-            <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+            <td class="table-text-info">
+              <%= user.email %>
+            </td>
+            <td class="table-text-info">
+              <%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %>
+            </td>
             <td>
               <div class="phone-header fst-italic"><%= t('table_headers.phone_number')+':  ' %></div>
               <div class="table-text-info"><%= user.profile&.phone_number || '' %></div>
@@ -68,7 +74,9 @@
               <div class="phone-header fst-italic"><%= t('company_phone')+':  ' %></div>
               <div class="table-text-info"><%= user.profile&.company_phone || '' %></div>
             </td>
-            <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+            <td class="table-text-info">
+              <%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -98,7 +106,9 @@
             </tr>
           <tr>
             <th class="mobile-card-row-header"><%= t('table_headers.address') %></th>
-            <td class="table-text-info"><%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %></td>
+            <td class="table-text-info">
+              <%= link_to "#{user.profile.address || ''}", "https://www.google.com/maps/search/?api=1&query=#{user.profile.address || ''}", target: '_blank' %>
+            </td>
           </tr>
           <tr>
             <th class="mobile-card-row-header"><%= t('table_headers.phone_number') %></th>
@@ -114,7 +124,9 @@
           </tr>
           <tr>
             <th class="mobile-card-row-header"><%= t('table_headers.sns_information') %></th>
-            <td class="table-text-info"><%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %></td>
+            <td class="table-text-info">
+              <%= link_to "#{user.profile.sns_information}", "https://line.me/R/ti/p/#{user.profile.sns_information}", target: '_blank' %>
+            </td>
           </tr>
         </tbody>
       </table>
